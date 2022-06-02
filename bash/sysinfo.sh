@@ -20,7 +20,7 @@ echo " "
 
 # Ip address used by the machine 
 echo "IP Address -"
-domainname -i
+domainname -I
 
 echo " "
     
