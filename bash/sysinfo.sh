@@ -1,15 +1,31 @@
 # System Information 
 
-# Hostname, operating system and architecture 
-hostnamectl
+# Hostname
+echo "Hostname -"
+hostname
 
-# Domain name
-  domainname -d
+echo " "
+
+#DNS domain name
+echo "Domain name -"
+domainname -d
+
+echo " "
+
+#operating system name and version, identifying the Linux distro in use
+echo "OS -"
+grep PRETTY /etc/os-release
+
+echo " "
 
 # Ip address used by the machine 
-    domainname -I
+echo "IP Address -"
+domainname -i
+
+echo " "
     
-# Capacity of root directory 
+#amount of space available in the root filesystem 
+echo "Capacity of root directory -"
 df -h /root
 
 exit
