@@ -1,31 +1,25 @@
 # System Information 
 
-# Hostname
-echo "Hostname -"
-hostname
-
-echo " "
-
-#DNS domain name
-echo "Domain name -"
-domainname -d
-
-echo " "
-
-#operating system name and version, identifying the Linux distro in use
-echo "OS -"
-grep PRETTY /etc/os-release
-
-echo " "
-
+# FQDN (Fully qualified domain name)
+object1=$(hostname --fqdn)
+#
+# Operating System name and version
+object2=$(source /etc/os-release ; echo $NAME $VERSION)
+#
 # Ip address used by the machine 
-echo "IP Address -"
-domainname -I
+object3=$(domainname -I)
+#
+#Free Space available in Root Filesystem
+object4=$(df -h /root --output=avail | tail -1)
 
-echo " "
-    
-#amount of space available in the root filesystem 
-echo "Capacity of root directory -"
-df -h /root
+cat <<exit
+
+--------------------System Information for $(hostname)-----------------------
+===========================================================================
+FDQN                                   : $object1
+Operating System                       : $object2
+Ip address                             : $object3
+Free Space available in Root Filesystem: $object4
+===========================================================================
 
 exit
